@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
   def index
-    @users = users
+    @users = User.all
     authorize @users
   end
 
@@ -11,16 +11,26 @@ class UsersController < ApplicationController
   end
 
   def edit
-    #Todo
+    @user = user
+    authorize @user
   end
-  
+
+  def update
+    @user = user
+    if @user.update(user_params)
+      redirect_to users_path
+    else
+      render :edit
+    end
+  end
+
   protected
-  
-  def users
-    User.all
-  end
-  
+
   def user
     User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :role)
   end
 end
