@@ -10,19 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_130611) do
+ActiveRecord::Schema.define(version: 2019_10_17_153335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "movies", force: :cascade do |t|
-    t.string "title"
-    t.string "ganre"
-    t.date "year"
-    t.string "director"
-    t.text "actors"
-    t.text "plot"
-    t.text "poster_img"
+    t.string "title", default: " "
+    t.string "ganre", default: " "
+    t.date "release_date"
+    t.string "director", default: " "
+    t.text "actors", default: [], array: true
+    t.text "plot", default: " "
+    t.integer "metascore"
+    t.float "imdbRating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_10_17_130611) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.boolean "active", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
