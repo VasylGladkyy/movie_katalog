@@ -38,7 +38,7 @@ Rails.application.configure do
   
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
   
-  config.action_mailer.default_url_options = { host: 'localhost', port: 1025 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   
   config.action_mailer.perform_caching = false
 
