@@ -1,15 +1,26 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   def index
-    #Todo
+    @users = users
+    authorize @users
   end
 
   def show
-    #Todo
+    @user = user
+    authorize @user
   end
 
   def edit
     #Todo
+  end
+  
+  protected
+  
+  def users
+    User.all
+  end
+  
+  def user
+    User.find(params[:id])
   end
 end
