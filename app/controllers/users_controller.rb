@@ -24,8 +24,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @user = user.change_status
+
+  def toggle
+    @user = user.toggle!(:active)
     redirect_to users_path
   end
 

@@ -3,17 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-
   enum role: %i[admin customer]
-
-  def change_status
-    if active
-      update_attributes(active: false)
-    else
-      update_attributes(active: true)
-    end
-  end
-
+  
+  has_many :reviews
+  
   def active_for_authentication?
     super && active
   end
