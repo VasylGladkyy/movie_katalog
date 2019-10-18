@@ -24,6 +24,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = user.change_status
+    redirect_to users_path
+  end
+
   protected
 
   def user
