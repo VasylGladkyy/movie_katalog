@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
 
-  def toggle
+  def toggle_account_status
     @user = user.toggle!(:active)
     redirect_to users_path
   end

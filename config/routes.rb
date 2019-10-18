@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:index, :show, :edit, :update] do
     member do
-      patch :toggle
-      put :toggle
+      patch :toggle_account_status
+      put :toggle_account_status
     end
   end
   root "movies#index"
