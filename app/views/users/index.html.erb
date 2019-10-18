@@ -1,1 +1,27 @@
-<h1>Hello friend</h1>
+<h2>Users list:</h2>
+<table>
+  <tr>
+    <th>User nick</th>
+    <th>User role</th>
+    <th>User email</th>
+    <th>Account create</th>
+    <th> </th>
+  </tr>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.nickname %></td>
+    <td><%= user.role %></td>
+    <td><%= user.email %></td>
+    <td><%= user.created_at.strftime("%d.%m.%Y") %></td>
+    <td><%= link_to 'Show', user_path(user) %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to user.active ? 'Block' : 'Unblock',
+                    user_path(user), method: :delete,
+                    data: { confirm:
+                                user.active ? "User:#{user.nickname} is blocked"
+                                    : "User:#{user.nickname} is unblocked"
+                    }%></td>
+    <td></td>
+  </tr>
+<% end %>
+</table>
