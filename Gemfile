@@ -13,6 +13,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem "pundit"
 
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'jquery-rails'
+
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
