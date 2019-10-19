@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_19_165816) do
+ActiveRecord::Schema.define(version: 2019_10_19_202736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_10_19_165816) do
     t.string "ganre", default: " "
     t.date "release_date"
     t.string "director", default: " "
-    t.text "actors", default: [], array: true
+    t.text "actors", default: " "
     t.text "plot", default: " "
     t.integer "metascore"
     t.float "imdbRating"
