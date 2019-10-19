@@ -17,6 +17,8 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 gem 'simple_form'
 
+gem 'image_processing', '~> 1.2'
+
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
