@@ -6,5 +6,7 @@ Rails.application.routes.draw do
       put :toggle_account_status
     end
   end
+
+  resources :movies, only: [:index, :show]
   root "movies#index"
 end
