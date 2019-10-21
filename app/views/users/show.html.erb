@@ -1,28 +1,40 @@
-<p>
-  <strong>User:</strong>
-  <%= @user.nickname %>
-</p>
-
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Created:</strong>
-  <%= @user.created_at.strftime("%d.%m.%Y") %>
-</p>
-
-<% unless @user.updated_at.nil? %>
-<p>
-  <strong>Updated:</strong>
-  <%= @user.updated_at.strftime("%d.%m.%Y") %>
-</p>
-<%end %>
-<td><%= link_to 'Edit', edit_user_path(@user) %></td>
-<%= link_to 'Back', users_path %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="well well-sm">
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <%= image_tag(@user.profile_image.variant(resize:'350x500')) %>
+          </div>
+          <div class="col-sm-6 col-md-8">
+            <h2><strong><%= @user.nickname %></strong></h2>
+            <div class="text_about_user">
+              <p>
+                <strong>Role:</strong>
+                <%= @user.role %>
+              </p>
+              <p>
+              <strong>Email:</strong>
+              <%= @user.email %>
+              </p>
+              <p>
+                <strong>Created:</strong>
+                <%= @user.created_at.strftime("%d.%m.%Y") %>
+              </p>
+              <% unless @user.updated_at.nil? %>
+                <p>
+                  <strong>Updated:</strong>
+                  <%= @user.updated_at.strftime("%d.%m.%Y") %>
+                </p>
+              <%end %>
+            </div>
+            <div class="show-button-group">
+            <%= link_to 'Edit', edit_user_path(@user), class:"btn btn-primary", role:"button" %>
+            <%= link_to 'Back', users_path, class:"btn btn-primary", role:"button"%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

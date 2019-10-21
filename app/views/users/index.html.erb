@@ -1,27 +1,40 @@
-<h2>Users list:</h2>
-<table>
+<div class="container mt-4">
+  <div class="table-responsive">
+<h3>Users list:</h3>
+<table class="table table-hover mt-2">
+  <thead class="thead-inverse">
   <tr>
-    <th>User nick</th>
-    <th>User role</th>
-    <th>User email</th>
-    <th>Account create</th>
-    <th> </th>
+    <th scope="col">User</th>
+    <th scope="col">User nick</th>
+    <th scope="col">User role</th>
+    <th scope="col">User email</th>
+    <th scope="col">Account create</th>
+    <th scope="col"> </th>
+    <th scope="col"> </th>
+    <th scope="col"> </th>
+    <th scope="col"> </th>
   </tr>
+  </thead>
+  <tbody class="tcontent">
 <% @users.each do |user| %>
   <tr>
+    <td><%= image_tag(user.profile_image.variant(resize:'120x120'), class: "users-images") %></td>
     <td><%= user.nickname %></td>
     <td><%= user.role %></td>
     <td><%= user.email %></td>
     <td><%= user.created_at.strftime("%d.%m.%Y") %></td>
-    <td><%= link_to 'Show', user_path(user) %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Show', user_path(user), class:"btn btn-info", role:"button"%></td>
+    <td><%= link_to 'Edit', edit_user_path(user), class:"btn btn-warning", role:"button"%></td>
     <td><%= link_to user.active ? 'Block' : 'Unblock',
                     toggle_account_status_user_path(user), method: :put,
                     data: { confirm:
                                 user.active ? "User:#{user.nickname} is blocked"
                                     : "User:#{user.nickname} is unblocked"
-                    }%></td>
+                    }, class:"btn btn-warning", role:"button"%></td>
     <td></td>
   </tr>
 <% end %>
+  </tbody>
 </table>
+  </div>
+</div>
