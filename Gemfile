@@ -18,6 +18,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 
 gem 'image_processing', '~> 1.2'
+gem 'gravatar_image_tag'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 

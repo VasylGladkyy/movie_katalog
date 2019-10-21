@@ -4,11 +4,23 @@
       <div class="well well-sm">
         <div class="row">
           <div class="col-sm-6 col-md-4">
-            <%= image_tag(@user.profile_image.variant(resize:'350x500')) %>
+            <% if @user.profile_image.attached? %>
+             <%= image_tag(@user.profile_image.variant(resize:'350x500')) %>
+              <% else %>
+              <% image_tag(gravatar_image_url(@user.email, size:350), height:350, width: 100) %>
+              <% end %>
           </div>
           <div class="col-sm-6 col-md-8">
             <h2><strong><%= @user.nickname %></strong></h2>
             <div class="text_about_user">
+              <p>
+                  <strong>Status of account:</strong>
+                    <% if @user.active  %>
+                      <span>Active</span>
+                    <%else %>
+                      <span>Blocked</span>
+                    <%end %>
+              </p>
               <p>
                 <strong>Role:</strong>
                 <%= @user.role %>

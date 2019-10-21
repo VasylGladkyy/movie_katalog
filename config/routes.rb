@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :movies, only: [:index, :show]
+  resources :movies, only: [:index, :show] do
+    resources :reviews
+  end
   root "movies#index"
 end

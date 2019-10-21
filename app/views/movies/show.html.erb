@@ -1,0 +1,13 @@
+<h1>
+  <%= @movie.title %>
+</h1>
+<p>
+  <strong>Ganre:</strong>
+  <%= @movie.ganre %>
+</p>
+<% if @movie.reviews.any? %>
+  <%= render @movie.reviews.content %>
+  redirect_to
+<% else %>
+  <%= render partial: "reviews/form"%>
+<% end %>

@@ -18,7 +18,13 @@
   <tbody class="tcontent">
 <% @users.each do |user| %>
   <tr>
-    <td><%= image_tag(user.profile_image.variant(resize:'120x120'), class: "users-images") %></td>
+    <td>
+      <% if user.profile_image.attached? %>
+        <%= image_tag(user.profile_image.variant(resize:'120x120')) %>
+      <% else %>
+        <% image_tag(gravatar_image_url(user.email, size:120), height:120, width: 120) %>
+      <% end %>
+    </td>
     <td><%= user.nickname %></td>
     <td><%= user.role %></td>
     <td><%= user.email %></td>
