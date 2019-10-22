@@ -10,5 +10,10 @@ Rails.application.routes.draw do
   resources :movies, only: [:index, :show] do
     resources :reviews
   end
+  
+  namespace :admin do
+    resources :movies
+  end
+  
   root "movies#index"
 end
