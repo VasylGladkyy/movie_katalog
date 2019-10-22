@@ -1,7 +1,8 @@
 <div class="col-sm-7">
-  <%= simple_form_for [@movie, Review.new] do |f|%>
+  <h4>Add review:</h4>
+  <%= simple_form_for [reviewable, Review.new] do |f|%>
     <div class="form-group">
-      <%=f.input :rate, label: 'Your rate for this movie:', input_html: { max: "10" } %>
+      <%=f.input :rate, label: 'Your rate for this movie:', input_html: { max: "10", min: "0"} %>
       <%= f.label :'Your review:' %>
       <%= f.rich_text_area :description %>
     </div>

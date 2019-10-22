@@ -1,13 +1,48 @@
-<h1>
-  <%= @movie.title %>
-</h1>
-<p>
-  <strong>Ganre:</strong>
-  <%= @movie.ganre %>
-</p>
-<% if @movie.reviews.any? %>
-  <%= render @movie.reviews.content %>
-  redirect_to
-<% else %>
-  <%= render partial: "reviews/form"%>
-<% end %>
+<div class="container">
+  <div class="about_movie">
+    <div class="movie_title">
+      <h1>
+        <%= @movie.title %>
+      </h1>
+    </div>
+    <div class="movie_ganre">
+      <p>
+        <strong>Ganre:</strong>
+        <%= @movie.ganre %>
+      </p>
+    </div>
+    <div class="movie_release_date">
+      <p>
+        <strong>Relesead:</strong>
+        <%= @movie.release_date %>
+      </p>
+    </div>
+    <div class="ratings">
+      <p>
+        <strong>Imdb rating:</strong>
+        <%= @movie.imdbRating %>
+      </p>
+      <p>
+        <strong>Metascore rating:</strong>
+        <%= @movie.metascore %>
+      </p>
+    </div>
+    <div class="movie_director">
+      <p>
+      <strong>Director:</strong>
+      <%= @movie.director %>
+      </p>
+    </div>
+    <div class="movie_actors">
+      <p>
+        <strong>Actors:</strong>
+        <%= @movie.actors %>
+      </p>
+    </div>
+    <div class="movie_plot">
+      <%= @movie.plot %>
+    </div>
+  </div>
+  <%= render partial: "reviews/reviews", locals: {reviewable: @movie} if @movie.reviews.any?%>
+  <%= render partial: "reviews/form", locals: {reviewable: @movie}%>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Movies Katalog:</h2>
+  <%= render partial: "search_form"%>
+  <% @movies.each do |movie| %>
+    <div class="container">
+    <h4><%=movie.title%></h4>
+    <strong>Ganre:</strong>
+    <%=movie.ganre %>
+    <br>
+    <strong>Year:</strong>
+    <%=movie.release_date.strftime("%Y") unless movie.release_date.nil? %>
+      <br>
+    <strong>Imdb rating:</strong>
+    <%=movie.imdbRating %>
+    <br>
+    <strong>Metascore rating:</strong>
+    <%=movie.metascore %>
+    <br>
+      <%= link_to 'More of this movie', movie_path(movie) %>
+    </div>
+  <% end %>
+</div>
