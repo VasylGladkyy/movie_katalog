@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class OmdbClient
   include Singleton
   def initialize
@@ -20,12 +18,16 @@ class OmdbClient
   end
 
   private
+  
+  def all(search_params = {})
+    check_responce(JSON.parse(RestClient.get(@root_url, params: search_params.merge!(base_params))))
+  end
 
   def base_params
     { apikey: @api_key }
   end
-
-  def all(search_params = {})
-    RestClient.get(@root_url, params: search_params.merge!(base_params))
+  
+  def check_responce(responce)
+    responce.key?("Error") ? nil : responce
   end
 end
