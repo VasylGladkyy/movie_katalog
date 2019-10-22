@@ -1,0 +1,10 @@
+<div class="col-sm-7">
+  <%= simple_form_for [@movie, Review.new] do |f|%>
+    <div class="form-group">
+      <%=f.input :rate, label: 'Your rate for this movie:', input_html: { max: "10" } %>
+      <%= f.label :'Your review:' %>
+      <%= f.rich_text_area :description %>
+    </div>
+    <%= f.button :submit, 'Save review', class: "btn btn-primary pull-right" %>
+    <%end %>
+</div>

@@ -1,0 +1,16 @@
+<h3>Reviews:</h3>
+<div class="col-sm-7">
+<% reviewable.reviews.each do |review| %>
+  <div class="mt-mb-3 mb-sm-0">
+    <strong>User:</strong>
+    <%= review.user.nickname %>
+    <br>
+    <strong>User rate for this movie:</strong>
+    <%= review.rate %>
+    <br>
+    <strong>Review:</strong>
+    <%= review.description%>
+    <br>
+  </div>
+<% end %>
+</div>

@@ -8,5 +8,6 @@ FactoryBot.define do
     plot { Faker::Company.bs }
     imdbRating { 25 }
     metascore { 10 }
+    imdb_id { Faker::Company.bs }
   end
 end
