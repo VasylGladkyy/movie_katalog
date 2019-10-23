@@ -13,21 +13,33 @@ class OmdbClient
     all(t: String(title))
   end
 
+  def by_title_all(title:)
+    all(s: String(title))
+  end
+
   def by_id_and_title(id:, title:)
     all(i: String(id), t: String(title))
   end
 
   private
-  
+
   def all(search_params = {})
-    check_responce(JSON.parse(RestClient.get(@root_url, params: search_params.merge!(base_params))))
+    check_responce(responce: JSON.parse(RestClient.get(@root_url, params: search_params.merge!(base_params))))
   end
 
   def base_params
     { apikey: @api_key }
   end
-  
-  def check_responce(responce)
-    responce.key?("Error") ? nil : responce
+
+  def check_search(responce:)
+    responce.key?('Search') ? arr_of_not_db_movies(array: responce['Search']) : responce
+  end
+
+  def check_responce(responce:)
+    responce.key?('Error') ? nil : check_search(responce: responce)
+  end
+
+  def arr_of_not_db_movies(array:)
+    array.delete_if { |h| Movie.exists?(imdb_id: h['imdbID']) }
   end
 end

@@ -1,26 +1,32 @@
 class Admin::MoviesController < ApplicationController
   def index
-    @movie = search_by_title
-    # @movies = Movie.all
-    # authorize [:admin, @movies]
+    @movies = search_by_title
+    authorize current_user
+  end
+
+  def new
+    @movie = odb_client.by_id(id: params[:imdbID])
+    # authorize current_user
   end
 
   def create
     @movie = Movie.new(movie_params)
-    # authorize [:admin, @movie]
+    # authorize current_user
     if @movie.save
-      flash[:success] = 'Movie is saved!'
       redirect_to root_path
     else
-      flash[:error] = 'Movie is not saved :('
       redirect_to @movie
     end
   end
 
   private
 
+  def movie
+    Movie.find(params[:id])
+  end
+
   def movie_params
-    params.require(:movie).permit(:title, :ganre, :release_date, :director, :actors, :plot, :metascore, :imdbRating, :imdb_id)
+    params.require(:movie).permit(:title, :ganre, :release_date, :director, :actors, :plot, :metascore, :imdbRating, :imdb_id, :poster_url)
   end
 
   def odb_client
@@ -28,7 +34,7 @@ class Admin::MoviesController < ApplicationController
   end
 
   def search_by_title
-    get_params = params[:title]
-    odb_client.by_title(title: get_params) if get_params
+    title = params[:title]
+    odb_client.by_title_all(title: title) if title
   end
 end
