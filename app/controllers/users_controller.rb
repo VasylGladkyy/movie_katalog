@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     @users = User.all
     authorize @users
@@ -17,6 +16,7 @@ class UsersController < ApplicationController
 
   def update
     @user = user
+    authorize @user
     if @user.update(user_params)
       redirect_to users_path
     else
@@ -24,9 +24,10 @@ class UsersController < ApplicationController
     end
   end
 
-
   def toggle_account_status
-    @user = user.toggle!(:active)
+    @user = user
+    authorize @user
+    @user.toggle!(:active)
     redirect_to users_path
   end
 
