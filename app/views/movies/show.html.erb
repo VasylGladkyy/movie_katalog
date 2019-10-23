@@ -1,10 +1,14 @@
 <div class="container">
   <div class="about_movie">
-    <div class="movie_title">
+    <div class="row" id="movie_title">
+      <div class="col-md-3">
+        <%= image_tag(@movie.poster_image.variant(resize:'350x350')) %>
+      </div>
+      <div class="col-md-4">
       <h1>
         <%= @movie.title %>
       </h1>
-    </div>
+
     <div class="movie_ganre">
       <p>
         <strong>Ganre:</strong>
@@ -38,6 +42,8 @@
         <strong>Actors:</strong>
         <%= @movie.actors %>
       </p>
+    </div>
+      </div>
     </div>
     <div class="movie_plot">
       <%= @movie.plot %>
