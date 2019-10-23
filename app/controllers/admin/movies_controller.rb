@@ -1,4 +1,5 @@
 class Admin::MoviesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @movies = search_by_title
     authorize current_user
@@ -6,12 +7,12 @@ class Admin::MoviesController < ApplicationController
 
   def new
     @movie = odb_client.by_id(id: params[:imdbID])
-    # authorize current_user
+    authorize current_user
   end
 
   def create
     @movie = Movie.new(movie_params)
-    # authorize current_user
+    authorize current_user
     if @movie.save
       redirect_to root_path
     else

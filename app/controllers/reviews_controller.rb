@@ -1,8 +1,8 @@
-# frozen_string_literal: true
-
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @review = reviewable_movie.reviews.new(review_params)
+    authorize @review
     if @review.save
       flash[:success] = 'Review is saved!'
       redirect_to reviewable_movie
