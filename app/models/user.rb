@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   enum role: %i[admin customer]
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
+  has_and_belongs_to_many :movies, dependent: :destroy
   has_one_attached :profile_image
 
   validates :nickname,

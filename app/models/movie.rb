@@ -3,6 +3,7 @@ require 'open-uri'
 class Movie < ApplicationRecord
   has_many :reviews, as: :reviewable, dependent: :destroy
   has_one_attached :poster_image, dependent: :destroy
+  has_and_belongs_to_many :users, dependent: :destroy
 
   validates :title, :imdb_id, presence: true, uniqueness: true
   validates :ganre, :release_date, :director, :actors, :plot, :poster_url, presence: true
