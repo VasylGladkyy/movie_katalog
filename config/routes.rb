@@ -15,5 +15,9 @@ Rails.application.routes.draw do
     resources :movies
   end
   
+  namespace :api do
+    resources :movies
+  end
+  
   root "movies#index"
 end
