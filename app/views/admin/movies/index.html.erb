@@ -2,51 +2,29 @@
 <h3>Find movie on OMDb resource</h3>
 <%= render partial: "layouts/search_form", locals: { path: admin_movies_path}%>
   <br>
-<% if @movie %>
-    <div class="row">
-    <div class="col-sm-7">
-  <%= simple_form_for :movie, url: {action: "create"}  do |f|  %>
-    <%= f.input :title, input_html: { value: @movie["Title"] } %>
-    <%= f.input :ganre, label: "Genre", input_html: { value: @movie["Genre"] } %>
-    <%= f.input :release_date, input_html: { value: @movie["Released"] } %>
-    <%= f.input :director, input_html: { value: @movie["Director"] } %>
-    <%= f.input :actors, as: :text, input_html: { value: @movie["Actors"] } %>
-    <%= f.input :plot, as: :text, input_html: { value: @movie["Plot"] } %>
-    <%= f.input :metascore, input_html: { value: @movie["Metascore"] } %>
-    <%= f.input :imdbRating, input_html: { value: @movie["imdbRating"] } %>
-    <%= f.input :imdb_id, as: :hidden, input_html: { value: @movie["imdbID"] } %>
-        <%= f.button :submit, "Save to db", class: "btn-primary btn-lg btn-block"%>
-        </div>
-        </div>
-  <% end %>
-<% end %>
-  <div class="table-responsive">
-    <h3>Currently movies in site data base:</h3>
+  <% if @movies %>
+    <div class="table-responsive">
     <table class="table table-hover mt-2">
       <thead class="thead-inverse">
       <tr>
-        <th scope="col">Movie title</th>
-        <th scope="col">Movie OMDB ID</th>
-        <th scope="col">Created at</th>
-        <th scope="col">Updated at</th>
-        <th scope="col"> </th>
-        <th scope="col"> </th>
-        <th scope="col"> </th>
+        <th scope="col">Movie</th>
+        <th scope="col">Title</th>
+        <th scope="col">Year</th>
+        <th scope="col">imdbID</th>
+        <th></th>
+        <th></th>
       </tr>
-      </thead>
       <tbody class="tcontent">
-        <% @movies.each do |movie| %>
-        <tr>
-          <td><%= movie.title %></td>
-          <td><%= movie.imdb_id %></td>
-          <td><%= movie.created_at.strftime("%d.%m.%Y %H:%M") %></td>
-          <td><%= movie.updated_at.strftime("%d.%m.%Y %H:%M") %></td>
-          <td><%= link_to 'Edit', edit_admin_movie_path(movie), class:"btn btn-warning", role:"button" %></td>
-          <td><%= link_to 'Delete', admin_movie_path(movie), class:"btn btn-warning", role:"button", method: :delete, data: { confirm: 'Are you sure?'} %></td>
-          <td></td>
-        </tr>
-        <% end %>
+      <%@movies.each do |movie| %>
+      <tr>
+        <td><%= image_tag(movie["Poster"], height:120, width:120 ) %></td>
+        <td><%= movie["Title"] %></td>
+        <td><%= movie["Year"] %></td>
+        <td><%= link_to 'Add to db', new_admin_movie_path(imdbID: movie["imdbID"]), class:"btn btn-info", role:"button"%></td>
+      </tr>
+        <%end %>
       </tbody>
     </table>
   </div>
+    <%end %>
 </div>

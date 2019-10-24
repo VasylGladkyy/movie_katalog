@@ -40,6 +40,6 @@ class OmdbClient
   end
 
   def arr_of_not_db_movies(array:)
-    array.delete_if { |h| Movie.exists?(imdb_id: h['imdbID']) }
+    array.delete_if { |h| Movie.exists?(imdb_id: h['imdbID']) || h['Type'] != 'movie' }
   end
 end
