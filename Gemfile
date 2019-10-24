@@ -23,6 +23,9 @@ gem 'image_processing', '~> 1.2'
 gem 'gravatar_image_tag'
 
 gem 'blueprinter'
+gem 'sidekiq'
+gem "sidekiq-cron", "~> 1.1"
+gem 'redis'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
