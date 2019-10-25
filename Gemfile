@@ -16,6 +16,7 @@ gem "pundit"
 gem 'rest-client'
 
 gem 'bootstrap-sass', '~> 3.4.1'
+gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
 gem 'simple_form'
 
