@@ -14,7 +14,7 @@ class Admin::MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
     authorize current_user
     if @movie.save
-      redirect_to root_path
+      redirect_to @movie
     else
       redirect_to @movie
     end
