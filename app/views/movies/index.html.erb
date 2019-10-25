@@ -1,28 +1,9 @@
 <div class="container">
   <h2>Movies Katalog:</h2>
-  <%= render partial: "layouts/search_form", locals: { path: root_path}%>
+  <%= render partial: "shared/search_form", locals: { path: root_path}%>
   <div class="container">
   <% @movies.each do |movie| %>
-    <div class="col-md-6" id="movies_row">
-      <div class="col-md-2">
-        <%= image_tag(movie.poster_image.variant(resize:'150x150')) %>
-      </div>
-    <div class="col-md-4" id="movies_text_column">
-    <h4><%=movie.title%></h4>
-    <strong>Ganre:</strong>
-    <%=movie.ganre %>
-    <br>
-    <strong>Year:</strong>
-    <%=movie.release_date.strftime("%Y") unless movie.release_date.nil? %>
-      <br>
-    <strong>Imdb rating:</strong>
-    <%=movie.imdbRating %>
-    <br>
-    <strong>Metascore rating:</strong>
-    <%=movie.metascore %>
-      <%= link_to 'More of this movie', movie_path(movie) %>
-    </div>
-    </div>
+      <%= render partial: "movie", locals: {movie: movie} %>
   <% end %>
     </div>
   </div>

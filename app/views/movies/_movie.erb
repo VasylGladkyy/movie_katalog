@@ -1,0 +1,20 @@
+<div class="col-md-6" id="movies_row">
+  <div class="col-md-2">
+    <%= image_tag(movie.poster_image.variant(resize:'150x150')) %>
+  </div>
+  <div class="col-md-4" id="movies_text_column">
+    <h4><%=movie.title%></h4>
+    <strong>Ganre:</strong>
+    <%=movie.ganre %>
+    <br>
+    <strong>Year:</strong>
+    <%=movie.release_date.strftime("%Y") unless movie.release_date.nil? %>
+    <br>
+    <strong>Imdb rating:</strong>
+    <%=movie.imdbRating %>
+    <br>
+    <strong>Metascore rating:</strong>
+    <%=movie.metascore %>
+    <%= link_to 'More of this movie', movie_path(movie) %>
+  </div>
+</div>

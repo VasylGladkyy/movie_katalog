@@ -16,4 +16,12 @@ class UserPolicy < ApplicationPolicy
   def toggle_account_status?
     user.admin?
   end
+
+  def add_to_watch_later?
+    user.id == record.id
+  end
+
+  def watch_later?
+    user.id == record.id
+  end
 end
