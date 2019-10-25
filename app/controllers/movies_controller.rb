@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :authenticate_user!, only: [:add_to_watch_later]
+  before_action :authenticate_user!, only: [:add_to_watch_later, :watch_later, :destroy_watch_later]
 
   def index
     @movies = Movie.search(title: params[:title])
@@ -11,7 +11,9 @@ class MoviesController < ApplicationController
 
   def add_to_watch_later
     @movie = movie
-    if current_user.save_movie?(movie: @movie)
+    @user = user
+    authorize @user
+    if @user.save_movie?(movie: @movie)
       flash[:success] = 'Movie added to later watch list'
     else
       flash[:error] = 'Added movie is present in watch later list!'
@@ -19,9 +21,26 @@ class MoviesController < ApplicationController
     redirect_to @movie
   end
 
+  def watch_later
+    @user = User.find(params[:id])
+    authorize @user
+    @movies = @user.movies
+  end
+
+  def destroy_watch_later
+    @user = user
+    authorize @user
+    @user.movies.delete(movie)
+    redirect_to watch_later_movie_path(@user)
+  end
+
   protected
 
   def movie
     Movie.find(params[:id])
+  end
+
+  def user
+    current_user
   end
 end
