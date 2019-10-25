@@ -1,5 +1,10 @@
 <div class="container">
 <% @movies.each do |movie| %>
+    <div class="row">
   <%= render partial: "movie", locals: {movie: movie} %>
+      <div class="col-md-0">
+    <%= link_to 'Delete form watch later list', destroy_watch_later_movie_path(movie), method: :delete  %>
+      </div>
+    </div>
 <% end %>
 </div>

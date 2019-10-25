@@ -17,9 +17,7 @@ class OmdbClient
     all(s: String(title))
   end
 
-  def by_id_and_title(id:, title:)
-    all(i: String(id), t: String(title))
-  end
+
 
   private
 

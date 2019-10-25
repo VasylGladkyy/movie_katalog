@@ -1,6 +1,6 @@
 <div class="container">
 <h3>Find movie on OMDb resource</h3>
-<%= render partial: "layouts/search_form", locals: { path: admin_movies_path}%>
+<%= render partial: "shared/search_form", locals: { path: admin_movies_path}%>
   <br>
   <% if @movies %>
     <div class="table-responsive">
