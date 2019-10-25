@@ -29,7 +29,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :movies
+    resources :movies do
+      member do
+        patch :refresh
+      end
+    end
   end
 
   namespace :api do

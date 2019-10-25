@@ -28,4 +28,8 @@ class UserPolicy < ApplicationPolicy
   def destroy_watch_later?
     user.id == record.id
   end
+  
+  def refresh?
+    user.admin?
+  end
 end

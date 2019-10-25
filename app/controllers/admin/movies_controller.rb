@@ -2,38 +2,32 @@ class Admin::MoviesController < ApplicationController
   before_action :authenticate_user!
   def index
     @movies = search_by_title
-    authorize current_user
+    authorize user
   end
 
   def new
     @movie = odb_client.by_id(id: params[:imdbID])
-    authorize current_user
+    authorize user
   end
 
   def create
     @movie = Movie.new(movie_params)
-    authorize current_user
+    authorize user
     if @movie.save
       redirect_to @movie
     else
       redirect_to @movie
     end
   end
-  #Putch
-  def refresh_movies
   
-    #ScheduledMoviesRefresherJob.perform_later
-    # 1 Call worker
-    # 2 notrify user
-    # Асинхронна кнопка -адмін натискає кнопку сторінка не перезагружається
-    # sidekig work!
-    # user has many
-    # active record
-    # association table
-    # user has many movies
-    # movies has many movies
-    # асинхронно кнопка
-    
+  def refresh
+    authorize user
+    if ScheduledMoviesRefresherJob.new.perform_now
+      flash[:success] = 'Movies start updated'
+      redirect_to root_path
+    else
+      flash[:error] = 'Movies haven\'t start updating'
+    end
   end
 
   private
@@ -48,6 +42,10 @@ class Admin::MoviesController < ApplicationController
 
   def odb_client
     OmdbClient.instance
+  end
+  
+  def user
+    current_user
   end
 
   def search_by_title
