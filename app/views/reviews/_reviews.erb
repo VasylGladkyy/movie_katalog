@@ -2,6 +2,13 @@
 <div class="col-sm-7">
 <% reviewable.reviews.each do |review| %>
   <div class="mt-mb-3 mb-sm-0">
+
+    <% if review.user.profile_image.attached? %>
+      <%= image_tag(review.user.profile_image.variant(resize:'50x50'), class: 'rounded-circle') %>
+    <% else %>
+      <% image_tag(gravatar_image_url(review.user.email, size:30), height:30, width: 30, class: 'rounded-circle') %>
+    <% end %>
+
     <strong>User:</strong>
     <%= review.user.nickname %>
     <br>

@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   end
 
   resources :movies, only: [:index, :show] do
+    member do
+      patch :add_to_watch_later
+      put :add_to_watch_later
+    end
     resources :reviews, only: [:create]
   end
   

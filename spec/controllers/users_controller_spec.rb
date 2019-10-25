@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe UsersController, type: :controller do
   let(:user) { create(:user) }
+  let(:user_two) { create(:user) }
   let(:admin) { create(:admin) }
 
   describe "if user not sign in" do
@@ -32,11 +33,16 @@ RSpec.describe UsersController, type: :controller do
       expect(response).not_to render_template("index")
     end
 
-    it "not to render user page" do
-      get :show, params: { id: user.id }
+    it "render user page if this user page" do
+      get :show, params: { id: user_two.id }
       expect(response).not_to render_template("show")
     end
-
+    
+    it "not to render  someone else's page" do
+      get :show, params: { id: user_two.id }
+      expect(response).not_to render_template("show")
+    end
+    
     it "not to render edit page" do
       get :edit, params: { id: user.id }
       expect(response).not_to render_template("edit")

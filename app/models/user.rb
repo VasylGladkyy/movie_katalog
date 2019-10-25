@@ -14,6 +14,14 @@ class User < ApplicationRecord
             presence: true,
             uniqueness: true,
             format: { with: /\A[a-zA-Z0-9]+\z/, message: "only allows letters and numbers" }
+  
+  def save_movie?(movie:)
+    if movies.include?(movie)
+      false
+    else
+      movies << movie
+    end
+  end
 
   def active_for_authentication?
     super && active

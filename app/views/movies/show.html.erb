@@ -48,6 +48,16 @@
     <div class="movie_plot">
       <%= @movie.plot %>
     </div>
+
+    <% if flash[:error].present? %>
+      <div class="alert alert-danger" role="alert">
+      <p><%= flash[:error]%></p>
+      </div>
+    <% end %>
+    <div class="watch_later_button">
+      <%= link_to "Watch later", add_to_watch_later_movie_path(@movie), method: :put, class:"btn btn-warning pull-right", role:"button"%>
+    </div>
+
   </div>
   <%= render partial: "reviews/reviews", locals: {reviewable: @movie} if @movie.reviews.any?%>
   <%= render partial: "reviews/form", locals: {reviewable: @movie}%>

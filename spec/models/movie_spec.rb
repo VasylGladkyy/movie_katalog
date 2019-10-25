@@ -13,6 +13,7 @@ RSpec.describe Movie, type: :model do
     @imdbRating = 6.9
     @metascore = 55
     @imdb_id = Faker::Company.bs
+    @poster_url = Faker::Avatar.image
     @movie = Movie.create(
       title: @title,
       ganre: @ganre,
@@ -22,7 +23,8 @@ RSpec.describe Movie, type: :model do
       plot: @plot,
       imdbRating: @imdbRating,
       metascore: @metascore,
-      imdb_id: @imdb_id
+      imdb_id: @imdb_id,
+      poster_url: Faker::Avatar.image
     )
   end
 
@@ -219,9 +221,16 @@ RSpec.describe Movie, type: :model do
   end
 
   describe 'associations tests' do
-    it 'should have many reviews' do
+    it 'have many reviews' do
       movie = Movie.reflect_on_association(:reviews)
       expect(movie.macro).to eq(:has_many)
+    end
+  end
+  
+  describe 'Search method test' do
+    it 'back movie object' do
+      movie = Movie.search(title: @title)
+      expect(movie).to eq([@movie])
     end
   end
 end

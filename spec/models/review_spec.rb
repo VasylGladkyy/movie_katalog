@@ -30,7 +30,7 @@ RSpec.describe Review, type: :model do
              )).not_to be_valid
     end
 
-    it 'is not valid if rate bigger then 10 or smaller then 1' do
+    it 'is not valid if rate bigger then 10 or smaller then 0' do
       expect(described_class.create(
                rate: 11,
                description: @description,
@@ -39,7 +39,7 @@ RSpec.describe Review, type: :model do
              )).not_to be_valid
 
       expect(described_class.create(
-               rate: 0,
+               rate: -1,
                description: @description,
                user: @user,
                reviewable: @reviewable

@@ -9,5 +9,6 @@ FactoryBot.define do
     imdbRating { 25 }
     metascore { 10 }
     imdb_id { Faker::Company.bs }
+    poster_url { Faker::Avatar.image }
   end
 end

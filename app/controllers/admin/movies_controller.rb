@@ -19,6 +19,22 @@ class Admin::MoviesController < ApplicationController
       redirect_to @movie
     end
   end
+  #Putch
+  def refresh_movies
+  
+    #ScheduledMoviesRefresherJob.perform_later
+    # 1 Call worker
+    # 2 notrify user
+    # Асинхронна кнопка -адмін натискає кнопку сторінка не перезагружається
+    # sidekig work!
+    # user has many
+    # active record
+    # association table
+    # user has many movies
+    # movies has many movies
+    # асинхронно кнопка
+    
+  end
 
   private
 
