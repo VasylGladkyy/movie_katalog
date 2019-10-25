@@ -1,63 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MovieKatalog</title>
+    <title>Movies catalog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <%= link_to 'Movies katalog', root_path, class: "navbar-brand"%>
-      </div>
-      <%if user_signed_in? %>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav">
-            <li class="<%= active_class(root_path) %>">
-              <%= link_to 'Home', root_path %>
-            </li>
-            <% if current_user.admin? %>
-              <li class="<%= active_class(admin_movies_path)%>">
-                <%= link_to 'Movies page', admin_movies_path %>
-              </li>
-              <li class="<%= active_class(users_path) %>">
-                <%= link_to 'Users page', users_path %>
-              </li>
-            <%end %>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="<%= active_class(user_path(current_user)) %>">
-              <%= link_to current_user.nickname, user_path(current_user)%>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <span class="glyphicon glyphicon-log-out"></span> Log out
-              <%end %>
-            </li>
-          </ul>
-      <%else %>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <%= link_to new_user_registration_path do %>
-              <span class="glyphicon glyphicon-user"></span> Sign Up
-            <%end %>
-          </li>
-          <li>
-            <%= link_to new_user_session_path do %>
-              <span class="glyphicon glyphicon-log-in"></span> Login
-            <%end %>
-          </li>
-        </ul>
-        </div>
-      <%end %>
-    </div>
-  </nav>
-
+    <%= render 'shared/navbar' %>
     <%= yield %>
-
   </body>
 </html>
