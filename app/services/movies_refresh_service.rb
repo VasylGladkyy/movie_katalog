@@ -26,16 +26,16 @@ class MoviesRefreshService
   end
 
   def update_movies_atributes
-    @omdb_movies.each do |move|
-      movie = Movie.find_by(imdb_id: move['imdbID'])
-      movie.update(title: move['Title'],
-                   ganre: move['Genre'],
-                   release_date: move['Released'],
-                   director: move['Director'],
-                   actors: move['Actors'],
-                   plot: move['Plot'],
-                   metascore: move['Metascore'],
-                   imdbRating: move['imdbRating'])
+    @omdb_movies.each do |movie|
+      movie = Movie.find_by(imdb_id: movie['imdbID'])
+      movie.update(title: movie['Title'],
+                   ganre: movie['Genre'],
+                   release_date: movie['Released'],
+                   director: movie['Director'],
+                   actors: movie['Actors'],
+                   plot: movie['Plot'],
+                   metascore: movie['Metascore'],
+                   imdbRating: movie['imdbRating'])
     end
   end
 end
