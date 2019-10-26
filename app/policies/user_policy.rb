@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserPolicy < ApplicationPolicy
   attr_reader :user, :record
 
@@ -24,11 +26,11 @@ class UserPolicy < ApplicationPolicy
   def watch_later?
     user.id == record.id
   end
-  
+
   def destroy_watch_later?
     user.id == record.id
   end
-  
+
   def refresh?
     user.admin?
   end

@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :authenticate_user!, only: [:add_to_watch_later, :watch_later, :destroy_watch_later]
+  before_action :authenticate_user!, only: %i[add_to_watch_later watch_later destroy_watch_later]
 
   def index
     @movies = Movie.search(title: params[:title])

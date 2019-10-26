@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::BaseController < ActionController::Base
   def record_responce(record, status = 300)
     hash = serialize_record(record)

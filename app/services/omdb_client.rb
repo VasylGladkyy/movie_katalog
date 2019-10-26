@@ -8,16 +8,10 @@ class OmdbClient
   def by_id(id:)
     all(i: String(id))
   end
-
-  def by_title(title:)
-    all(t: String(title))
-  end
-
+  
   def by_title_all(title:)
     all(s: String(title))
   end
-
-
 
   private
 

@@ -226,7 +226,7 @@ RSpec.describe Movie, type: :model do
       expect(movie.macro).to eq(:has_many)
     end
   end
-  
+
   describe 'Search method test' do
     it 'back movie object' do
       movie = Movie.search(title: @title)

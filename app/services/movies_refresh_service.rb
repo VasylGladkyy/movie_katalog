@@ -20,22 +20,19 @@ class MoviesRefreshService
   end
 
   def fetch_ombd_movies
-    @omdb_movies = @omdb_ids.map do |id|
-      @omdb_client.by_id(id: id)
-    end
+    @omdb_movies = @omdb_ids.map { |id| @omdb_client.by_id(id: id) }
   end
 
   def update_movies_atributes
-    movies = @omdb_movies
-    movies.each do |movie|
+    @omdb_movies.each do |movie|
       Movie.find_by(imdb_id: movie['imdbID']).update_columns(title: movie['Title'],
-                                                            ganre: movie['Genre'],
-                                                            release_date: movie['Released'],
-                                                            director: movie['Director'],
-                                                            actors: movie['Actors'],
-                                                            imdbRating: movie['imdbRating'],
-                                                            metascore: movie['Metascore'],
-                                                            plot: movie['Plot'])
+                                                     ganre: movie['Genre'],
+                                                     release_date: movie['Released'],
+                                                     director: movie['Director'],
+                                                     actors: movie['Actors'],
+                                                     imdbRating: movie['imdbRating'],
+                                                     metascore: movie['Metascore'],
+                                                     plot: movie['Plot'])
     end
   end
 end

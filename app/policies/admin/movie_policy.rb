@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::MoviePolicy < ApplicationPolicy
   def index?
     user.admin?
@@ -6,9 +8,8 @@ class Admin::MoviePolicy < ApplicationPolicy
   def create?
     user.admin?
   end
-  
+
   def new?
     user.admin?
   end
 end
-

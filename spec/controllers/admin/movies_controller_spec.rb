@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Admin::MoviesController do
@@ -5,27 +7,26 @@ RSpec.describe Admin::MoviesController do
   let(:admin) { create(:admin) }
   let(:movie) { create(:movie) }
 
-  describe "if user not sign in" do
-    it "not to render movies page" do
+  describe 'if user not sign in' do
+    it 'not to render movies page' do
       get :index
-      expect(response).not_to render_template("index")
+      expect(response).not_to render_template('index')
     end
-
   end
 
-  describe "if user sign in like ordinary user" do
+  describe 'if user sign in like ordinary user' do
     before do
       user.confirm
       sign_in user
     end
 
-    it "not to render movies page" do
+    it 'not to render movies page' do
       get :index
-      expect(response).not_to render_template("index")
+      expect(response).not_to render_template('index')
     end
   end
 
-  describe "if user sign in like admin" do
+  describe 'if user sign in like admin' do
     before do
       admin.confirm
       sign_in admin
@@ -35,11 +36,10 @@ RSpec.describe Admin::MoviesController do
       before do
         get :index
       end
-      
-      it "render movies page" do
-        expect(response).to render_template("index")
+
+      it 'render movies page' do
+        expect(response).to render_template('index')
       end
-     
     end
   end
 end

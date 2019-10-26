@@ -19,7 +19,7 @@ class Admin::MoviesController < ApplicationController
       redirect_to @movie
     end
   end
-  
+
   def refresh
     authorize user
     if ScheduledMoviesRefresherJob.new.perform_now
@@ -43,7 +43,7 @@ class Admin::MoviesController < ApplicationController
   def odb_client
     OmdbClient.instance
   end
-  
+
   def user
     current_user
   end

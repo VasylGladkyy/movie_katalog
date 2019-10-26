@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe OmdbClient do
@@ -20,7 +22,7 @@ describe OmdbClient do
     end
 
     it 'if id incorect' do
-      actual = @omdb_client.by_id(id: "asdasdasdadasd")
+      actual = @omdb_client.by_id(id: 'asdasdasdadasd')
       expect(actual).to eq(nil)
     end
   end
@@ -36,9 +38,9 @@ describe OmdbClient do
       expect(actual['imdbID']).to eq(@id)
       expect(actual[:Title]).to eq(@Title)
     end
-    
+
     it 'if title incorect' do
-      actual = @omdb_client.by_title(title: "asdasdasdadasd")
+      actual = @omdb_client.by_title(title: 'asdasdasdadasd')
       expect(actual).to eq(nil)
     end
   end

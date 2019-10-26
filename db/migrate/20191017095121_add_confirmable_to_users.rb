@@ -1,5 +1,6 @@
-class AddConfirmableToUsers < ActiveRecord::Migration[6.0]
+# frozen_string_literal: true
 
+class AddConfirmableToUsers < ActiveRecord::Migration[6.0]
   ## Confirmable
   # t.string   :confirmation_token
   # t.datetime :confirmed_at

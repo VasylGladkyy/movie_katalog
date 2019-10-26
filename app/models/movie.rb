@@ -14,7 +14,7 @@ class Movie < ApplicationRecord
     self.imdbRating = format_numeric_value(imdbRating)
     self.metascore = format_numeric_value(metascore)
   end
-  
+
   before_save :grab_image
 
   def self.search(title:)
