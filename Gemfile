@@ -19,7 +19,6 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 gem 'simple_form'
 
-gem 'gravatar_image_tag'
 gem 'image_processing', '~> 1.2'
 
 gem 'blueprinter'

@@ -12,7 +12,6 @@
     <th scope="col"> </th>
     <th scope="col"> </th>
     <th scope="col"> </th>
-    <th scope="col"> </th>
   </tr>
   </thead>
   <tbody class="tcontent">
@@ -22,14 +21,13 @@
       <% if user.profile_image.attached? %>
         <%= image_tag(user.profile_image.variant(resize:'120x120')) %>
       <% else %>
-        <% image_tag(gravatar_image_url(user.email, size:120), height:120, width: 120) %>
+        <%= image_tag("default-user-icon-8.jpg", height: 110, widht: 110) %>
       <% end %>
     </td>
     <td><%= user.nickname %></td>
     <td><%= user.role %></td>
     <td><%= user.email %></td>
     <td><%= user.created_at.strftime("%d.%m.%Y") %></td>
-    <td><%= link_to 'Show', user_path(user), class:"btn btn-info", role:"button"%></td>
     <td><%= link_to 'Edit', edit_user_path(user), class:"btn btn-warning", role:"button"%></td>
     <td><%= link_to user.active ? 'Block' : 'Unblock',
                     toggle_account_status_user_path(user), method: :put,

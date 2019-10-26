@@ -1,1 +1,24 @@
-<h1>Edit</h1>
+<div class="container">
+  <div class="user-image-for-edit">
+    <% if @user.profile_image.attached? %>
+      <%= image_tag(@user.profile_image.variant(resize:'240x240')) %>
+    <% else %>
+      <%= image_tag("default-user-icon-8.jpg", height: 220, widht: 140) %>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+  <%= simple_form_for(@user) do |f| %>
+    <%= f.input :profile_image, as: :file %>
+    <%= f.input :nickname %>
+    <p>
+      <strong>User roles: </strong>
+    <%= f.select :role, User.roles.keys.map {|role| [role.titleize,role]}, {}, { :class => 'form-control'} %>
+    </p>
+      <%= link_to 'Back', users_path, class:"btn btn-primary", role:"button"%>
+      <%= f.button :submit, 'Update', class: "btn btn-primary" %>
+
+  <%end %>
+    <br>
+
+  </div>
+</div>
