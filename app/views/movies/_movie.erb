@@ -1,6 +1,11 @@
 <div class="col-md-6" id="movies_row">
   <div class="col-md-2">
-    <%= image_tag(movie.poster_image.variant(resize:'150x150')) %>
+    <% if !movie.poster_image.blank?  %>
+    <%= image_tag(movie.poster_image.variant(resize:'150x150'))%>
+      <%else %>
+      <%= image_tag(movie.poster_url)%>
+      <p>work</p>
+    <%end %>
   </div>
   <div class="col-md-4" id="movies_text_column">
     <h4><%=movie.title%></h4>
