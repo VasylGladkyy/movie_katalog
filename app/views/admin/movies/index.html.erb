@@ -1,4 +1,5 @@
 <div class="container">
+  <%= link_to "refresh", refresh_admin_movie_path(current_user), method: :patch %>
 <h3>Find movie on OMDb resource</h3>
 <%= render partial: "shared/search_form", locals: { path: admin_movies_path}%>
   <br>

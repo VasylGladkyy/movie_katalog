@@ -2,11 +2,7 @@
   <div class="about_movie">
     <div class="row" id="movie_title">
       <div class="col-md-3">
-        <% if @movie.poster_image.attached?%>
           <%= image_tag(@movie.poster_image.variant(resize:'350x350')) %>
-        <%else %>
-          <%= image_tag(@movie.poster_url, height:350, width:350 ) %>
-        <%end %>
       </div>
       <div class="col-md-4">
       <h1>
