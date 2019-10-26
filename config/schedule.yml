@@ -1,4 +1,4 @@
 refresh_movies:
-  cron: "0 0 */14 * *"
+  cron: "0 */6 * * *"
   class: "ScheduledMoviesRefresherJob"
   queue: default

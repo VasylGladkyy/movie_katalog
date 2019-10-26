@@ -1,0 +1,9 @@
+<div class="container">
+  <h3>Edit review:</h3>
+  <% if current_user.id != @review.user.id && current_user.admin? %>
+  <p>
+    By user <%= @review.user.nickname %>
+  </p>
+    <%end %>
+  <%= render partial: "reviews/form", locals: {reviewable: @movie, review: @review}%>
+</div>

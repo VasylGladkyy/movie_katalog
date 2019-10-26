@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :movies, only: %i[index show] do
+  resources :movies do
     member do
       patch :add_to_watch_later
       put :add_to_watch_later
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     member do
       delete :destroy_watch_later
     end
-    resources :reviews, only: [:create]
+    resources :reviews
   end
 
   namespace :admin do
