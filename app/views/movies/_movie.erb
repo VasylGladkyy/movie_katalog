@@ -1,10 +1,9 @@
 <div class="col-md-6" id="movies_row">
   <div class="col-md-2">
-    <% if movie.poster_image.attachment %>
+    <% if url_for(movie.poster_image) %>
     <%= image_tag(movie.poster_image.variant(resize:'150x150')) %>
-      <p><%=  %></p>
     <%else %>
-      <%= image_tag(movie.poster_url, height:150, width:115 ) %>
+      <%= image_tag(movie.poster_url, height:150, width:1250 ) %>
     <%end %>
   </div>
   <div class="col-md-4" id="movies_text_column">
