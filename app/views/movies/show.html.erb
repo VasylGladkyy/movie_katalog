@@ -22,6 +22,12 @@
       </p>
     </div>
     <div class="ratings">
+      <% if @movie.reviews.present? %>
+      <p>
+        <strong>Users average rating:</strong>
+        <%= @movie.reviews.average(:rate)%>
+      </p>
+        <%end %>
       <p>
         <strong>Imdb rating:</strong>
         <%= @movie.imdbRating %>
@@ -54,11 +60,13 @@
       <p><%= flash[:error]%></p>
       </div>
     <% end %>
+    <% unless current_user.movies.include?(@movie) %>
     <div class="watch_later_button">
-      <%= link_to "Watch later", add_to_watch_later_movie_path(@movie), method: :put, class:"btn btn-warning pull-right", role:"button"%>
+      <%= link_to "Watch later", add_to_watch_later_movie_path(@movie), method: :put, class:"btn btn-primary", id: "watch_later_button", role:"button"%>
     </div>
+    <%end %>
 
   </div>
   <%= render partial: "reviews/reviews", locals: {reviewable: @movie} if @movie.reviews.any?%>
-  <%= render partial: "reviews/form", locals: {reviewable: @movie}%>
+  <%= render partial: "reviews/form", locals: {reviewable: @movie, review: Review.new}%>
 </div>
