@@ -8,4 +8,8 @@ class MoviePolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def add_to_watch_later?
+    user.present?
+  end
 end

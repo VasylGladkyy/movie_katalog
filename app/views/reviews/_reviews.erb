@@ -13,12 +13,13 @@
     <% if review.user.profile_image.attached? %>
       <%= image_tag(review.user.profile_image.variant(resize:'50x50'), class: 'rounded-circle') %>
     <% else %>
-      <% image_tag("default-user-icon-8.jpg", height:30, width: 30, class: 'rounded-circle') %>
+      <%= image_tag("default-user-icon-8.jpg", height:30, width: 30, class: 'rounded-circle') %>
     <% end %>
 
-    <strong>User:</strong>
+    <strong>
     <%= review.user.nickname %>
     <br>
+    </strong>
     <strong>User rate for this movie:</strong>
     <%= review.rate %>
     <br>

@@ -3,7 +3,7 @@
   <%= render partial: "shared/search_form", locals: { path: root_path}%>
   <div class="container">
   <% @movies.each do |movie| %>
-      <div class="col-md-6" id="movies_row">
+      <div class="col-md-5" id="movies_row">
       <%= render partial: "movie", locals: {movie: movie} %>
       </div>
   <% end %>

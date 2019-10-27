@@ -9,14 +9,12 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: %i[index show edit update] do
     member do
-      patch :toggle_account_status
       put :toggle_account_status
     end
   end
 
   resources :movies do
     member do
-      patch :add_to_watch_later
       put :add_to_watch_later
     end
     member do

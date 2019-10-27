@@ -28,7 +28,7 @@
       <% if @movie.reviews.present? %>
       <p>
         <strong>Users average rating:</strong>
-        <%= @movie.reviews.average(:rate)%>
+        <%= @movie.reviews.average(:rate).round(1)%>
       </p>
         <%end %>
       <p>
