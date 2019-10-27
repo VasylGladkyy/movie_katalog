@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 describe OmdbClient do
@@ -26,35 +24,16 @@ describe OmdbClient do
       expect(actual).to eq(nil)
     end
   end
-
-  describe 'Find by title' do
-    it 'responce not null' do
-      actual = @omdb_client.by_title(title: @title)
+  
+  describe 'Find by title all' do
+    it 'Find by title all not null' do
+      actual = @omdb_client.by_title_all(title: @title)
       expect(actual).not_to eq(nil)
     end
 
-    it 'responce corectly' do
-      actual = @omdb_client.by_title(title: @title)
-      expect(actual['imdbID']).to eq(@id)
-      expect(actual[:Title]).to eq(@Title)
-    end
-
-    it 'if title incorect' do
-      actual = @omdb_client.by_title(title: 'asdasdasdadasd')
+    it 'if id incorect' do
+      actual = @omdb_client.by_title_all(title: "asdasdasd")
       expect(actual).to eq(nil)
-    end
-  end
-
-  describe 'Find by title and id' do
-    it 'Find by id and title not null' do
-      actual = @omdb_client.by_id_and_title(id: @id, title: @title)
-      expect(actual).not_to eq(nil)
-    end
-
-    it 'Find by id and title corectly' do
-      actual = @omdb_client.by_id_and_title(id: @id, title: @title)
-      expect(actual['imdbID']).to eq(@id)
-      expect(actual[:Title]).to eq(@Title)
     end
   end
 end
