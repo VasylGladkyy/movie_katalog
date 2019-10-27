@@ -21,7 +21,7 @@
       <tbody class="tcontent">
       <%@movies.each do |movie| %>
       <tr>
-        <td><%= image_tag(movie["Poster"], height:120, width:120 ) %></td>
+        <td><%= image_tag(movie["Poster"], height:120, width:120 )%></td>
         <td><%= movie["Title"] %></td>
         <td><%= movie["Year"] %></td>
         <td><%= link_to 'Add to db', new_admin_movie_path(imdbID: movie["imdbID"]), class:"btn btn-info", role:"button"%></td>
