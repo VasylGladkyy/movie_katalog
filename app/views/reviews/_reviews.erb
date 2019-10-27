@@ -13,7 +13,7 @@
     <% if review.user.profile_image.attached? %>
       <%= image_tag(review.user.profile_image.variant(resize:'50x50'), class: 'rounded-circle') %>
     <% else %>
-      <% image_tag(gravatar_image_url(review.user.email, size:30), height:30, width: 30, class: 'rounded-circle') %>
+      <% image_tag("default-user-icon-8.jpg", height:30, width: 30, class: 'rounded-circle') %>
     <% end %>
 
     <strong>User:</strong>
