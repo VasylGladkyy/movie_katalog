@@ -24,10 +24,10 @@ class Admin::MoviesController < ApplicationController
     authorize user
     if ScheduledMoviesRefresherJob.new.perform_now
       flash[:success] = 'Movies start updated'
-      redirect_to root_path
     else
       flash[:error] = 'Movies haven\'t start updating'
     end
+    render :index
   end
 
   private
