@@ -5,7 +5,7 @@
     <% if @user.profile_image.attached? %>
     <%= image_tag(@user.profile_image.variant(resize:'350x500'), class: "user-image-for-show") %>
     <% else %>
-    <%= image_tag("image/default-user-icon-8.jpg",onerror: "this.onerror=null;this.src='default-user-icon-8.jpg';", height: 220, widht: 140) %>
+    <%= image_tag("default-user-icon-8.jpg", height: 220, widht: 140) %>
     <% end %>
   </div>
     <div class="col-sm-6 col-md-8">
