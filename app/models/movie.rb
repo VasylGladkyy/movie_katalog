@@ -21,7 +21,7 @@ class Movie < ApplicationRecord
     if title
       where('title LIKE ?', "%#{title}%")
     else
-      all
+      order(imdbRating: :desc)
     end
   end
 
