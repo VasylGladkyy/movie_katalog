@@ -1,0 +1,33 @@
+nav.navbar.navbar-inverse.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      = link_to 'Movies catalog', root_path, class: "navbar-brand"
+    - if user_signed_in?
+      #myNavbar.collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li class="#{active_class(root_path)}" 
+            = link_to 'Home', root_path
+          li class="#{active_class(watch_later_movie_path(current_user.id))}" 
+            = link_to 'Watch later', watch_later_movie_path(current_user.id)
+          - if current_user.admin?
+            li class="#{active_class(admin_movies_path)}" 
+              = link_to 'Movies page', admin_movies_path
+            li class="#{active_class(users_path)}" 
+              = link_to 'Users page', users_path
+        ul.nav.navbar-nav.navbar-right
+          li class="#{active_class(user_path(current_user))}" 
+            = link_to current_user.nickname, user_path(current_user)
+          li
+            = link_to destroy_user_session_path, method: :delete do
+              span.glyphicon.glyphicon-log-out
+              | Log out
+    - else
+      ul.nav.navbar-nav.navbar-right
+        li
+          = link_to new_user_registration_path do
+            span.glyphicon.glyphicon-user
+            | Sign Up
+        li
+          = link_to new_user_session_path do
+            span.glyphicon.glyphicon-log-in
+            | Login
