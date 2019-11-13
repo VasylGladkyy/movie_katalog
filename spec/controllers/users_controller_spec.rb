@@ -76,13 +76,9 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'render user page' do
-        expect(response).to render_template('show')
+        expect(response).not_to render_template('show')
       end
-
-      it 'contain user' do
-        expect(assigns(:user)).to eq(user)
-      end
-
+      
       it 'dont contain other user' do
         expect(assigns(:user)).not_to eq(admin)
       end

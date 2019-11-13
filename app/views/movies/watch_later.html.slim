@@ -1,0 +1,11 @@
+.container
+  h3 Watch later list:
+  hr
+  - @movies.each do |movie|
+    #movies_row.col-md-6
+      .del_from_list_block
+        = link_to 'Delete from list', destroy_watch_later_movie_path(movie),
+                method: :delete, class: "btn btn-primary btn-sm",
+                id: "delete_from_watch_later",
+                role: "button"
+      = render partial: "movie", locals: {movie: movie}
