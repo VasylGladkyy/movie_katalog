@@ -1,0 +1,6 @@
+.container
+  h3 Edit review:
+  - if current_user.id != @review.user.id && current_user.admin?
+    p
+      | By user #{@review.user.nickname}
+  = render partial: "reviews/form", locals: {reviewable: @movie, review: @review}

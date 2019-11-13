@@ -1,0 +1,33 @@
+.container.mt-4
+  .table-responsive
+    h3 Users list:
+    table.table.table-hover.mt-2
+      thead.thead-inverse
+        tr
+          th scope="col"  User
+          th scope="col"  User nick
+          th scope="col"  User role
+          th scope="col"  User email
+          th scope="col"  Account create
+          th scope="col" 
+          th scope="col" 
+          th scope="col" 
+      tbody.tcontent
+        - @users.each do |user|
+          tr
+            td
+              - if user.profile_image.attached?
+                = image_tag(user.profile_image.variant(resize: '120x120'))
+              - else
+                = image_tag("default-user-icon-8.jpg", height: 110, widht: 110)
+            td= user.nickname
+            td= user.role
+            td= user.email
+            td= user.created_at.strftime("%d.%m.%Y")
+            td= link_to 'Edit', edit_user_path(user), class: "btn btn-warning", role: "button"
+            td= link_to user.active ? 'Block' : 'Unblock',
+                    toggle_account_status_user_path(user), method: :put,
+                    data: {confirm: user.active ? "User:#{user.nickname} is blocked" : "User:#{user.nickname} is unblocked" },
+                    class:"btn btn-warning",
+                    role:"button"
+            td

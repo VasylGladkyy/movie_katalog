@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Api::MoviesController < Api::BaseController
   def index
     record_responce(Movie.all, 200)

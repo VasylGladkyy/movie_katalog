@@ -1,26 +1,26 @@
 .user-form {
   width: 340px;
   margin: 50px auto;
-}
 
-.user-form form {
-  margin-bottom: 15px;
-  background: #f7f7f7;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  padding: 30px;
-}
+  form {
+    margin-bottom: 15px;
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+  }
 
-.user-form h2 {
-  margin: 0 0 15px;
+  h2 {
+    margin: 0 0 15px;
+  }
+
+  label{
+    text-indent: 0.5em;
+  }
 }
 
 .form-control, .btn {
   min-height: 38px;
   border-radius: 2px;
-}
-
-.user-form label{
-  text-indent: 0.5em;
 }
 
 .btn {
@@ -33,21 +33,32 @@
   margin: 50px auto;
 }
 
-.table-responsive .thead-inverse th {
-  text-align: center;
-  color: #fff;
-  background-color: #222222;
-}
+.table-responsive {
+  .thead-inverse th {
+    text-align: center;
+    color: #fff;
+    background-color: #222222;
+  }
 
-.table-responsive .tcontent td {
-  text-align: center;
-  vertical-align: middle;
-}
+  .thead-inverse th {
+    text-align: center;
+    color: #fff;
+    background-color: #222222;
+  }
 
-.table-responsive .tcontent .users-images{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+
+  .tcontent{
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .users-images{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }
 
 .glyphicon {  margin-bottom: 10px;margin-right: 10px;}
@@ -65,12 +76,12 @@
 
 .user-image-for-edit{
   margin: 25px;
-                 }
-.user-image-for-edit img{
-  border-radius: 50%;
+
+  img{
+    border-radius: 50%;
+  }
 }
 
 .user-image-for-show{
   border-radius: 50%;
 }
-

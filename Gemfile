@@ -18,6 +18,7 @@ gem 'rest-client'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'slim', '~> 3.0', '>= 3.0.6'
 
 gem 'image_processing', '~> 1.2'
 

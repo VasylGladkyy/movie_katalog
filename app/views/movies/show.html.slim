@@ -1,0 +1,49 @@
+.container
+  .about_movie
+    #movie_title.row
+      .col-md-3
+        = image_tag(@movie.poster_image,
+                src: 'Image Not Found',
+                onerror: "this.error=null;this.src='#{@movie.poster_url}'",
+                height: 350,
+                width: 220)
+      .col-md-4
+        h1
+          = @movie.title
+        .movie_ganre
+          p
+            strong Ganre:
+            = @movie.ganre
+        .movie_release_date
+          p
+            strong Relesead:
+            = @movie.release_date
+        .ratings
+          - if @movie.reviews.present?
+            p
+              strong Users average rating:
+              = @movie.reviews.average(:rate).round(1)
+          p
+            strong Imdb rating:
+            = @movie.imdbRating
+          p
+            strong Metascore rating:
+            = @movie.metascore
+        .movie_director
+          p
+            strong Director:
+            = @movie.director
+        .movie_actors
+          p
+            strong Actors:
+            = @movie.actors
+    .movie_plot
+      = @movie.plot
+    - if flash[:error].present?
+      .alert.alert-danger role="alert" 
+        p= flash[:error]
+    - unless current_user.movies.include?(@movie)
+      .watch_later_button
+        = link_to "Watch later", add_to_watch_later_movie_path(@movie), method: :put, class: "btn btn-primary", id: "watch_later_button", role: "button"
+  = render partial: "reviews/reviews", locals: { reviewable: @movie } if @movie.reviews.any?
+  = render partial: "reviews/form", locals: { reviewable: @movie, review: Review.new }
