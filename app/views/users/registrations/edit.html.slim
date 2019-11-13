@@ -1,0 +1,26 @@
+.user-form
+  h2
+    | Edit #{resource_name.to_s.humanize}
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f|
+    = f.error_notification
+    = f.input :profile_image, as: :file
+    = f.input :nickname, autofocus: true, input_html: {autocomplete: "nickname"}
+    = f.input :email, input_html: {autocomplete: "email"}
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      div
+        | Currently waiting confirmation for: #{resource.unconfirmed_email}
+    = f.input :password,
+            hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+            input_html: {autocomplete: "new-password"}
+    = f.input :password_confirmation, input_html: {autocomplete: "new-password"}
+    = f.input :current_password,
+            hint: "we need your current password to confirm your changes",
+            input_html: {autocomplete: "new-password"}
+    = f.button :submit, "Update", class: "btn-primary"
+.cancel_account
+  h3 Cancel my account
+  p
+    | Unhappy?
+    = button_to "Cancel my account",registration_path(resource_name),data: {confirm: "Are you sure?"},
+            method: :delete, class: "btn btn-danger"
+  = link_to "Back", :back, :class => "btn btn-primary"

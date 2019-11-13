@@ -1,0 +1,26 @@
+.container
+  .well.well-sm
+    .row
+      .col-sm-6.col-md-4
+        - if @user.profile_image.attached?
+          = image_tag(@user.profile_image.variant(resize: '350x500'), class: "user-image-for-show")
+        - else
+          = image_tag("default-user-icon-8.jpg", height: 220, widht: 140)
+      .col-sm-6.col-md-8
+        h2
+          strong= @user.nickname
+        br
+        p
+          strong Email:
+          = @user.email
+        p
+          strong Created:
+          = @user.created_at.strftime("%d.%m.%Y")
+        - unless @user.updated_at.nil?
+          p
+            strong Updated:
+            = @user.updated_at.strftime("%d.%m.%Y")
+      .show-button-group
+        = link_to 'Edit', edit_user_registration_path(@user), class: "btn btn-primary", role: "button"
+        | &nbsp
+        = link_to 'Back', root_path, class: "btn btn-primary", role: "button"
