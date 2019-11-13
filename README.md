@@ -1,24 +1,5 @@
-# README
+# Ruby Bootcamp - Movies catalog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Movies catalog - app where users could leave review and rate the movies.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Link to this app on Heroku https://glacial-shore-05344.herokuapp.com/
