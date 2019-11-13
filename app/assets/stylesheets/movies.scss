@@ -1,20 +1,16 @@
-// Place all the styles related to the Movies controller here.
-// They will automatically be included in application.css.scss.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 .about_movie {
   font-size: 18px;
-}
-
-.about_movie .movie_plot{
-  margin-top: 15px;
+  .movie_plot {
+    margin-top: 15px;
+  }
 }
 
 #movies_row{
   margin-top: 15px;
-}
 
-#movies_row #movies_text_column{
-  margin-left: 40px;
+  #movies_text_column {
+    margin-left: 40px;
+  }
 }
 
 #watch_later_button{
