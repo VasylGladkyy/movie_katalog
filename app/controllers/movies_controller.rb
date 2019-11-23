@@ -33,7 +33,10 @@ class MoviesController < ApplicationController
     @user = user
     authorize @user
     @user.movies.delete(movie)
-    redirect_to watch_later_movie_path(@user)
+    respond_to do |format|
+      format.html { redirect_to watch_later_movie_path(@user) }
+      format.js
+    end
   end
 
   protected

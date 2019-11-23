@@ -7,5 +7,6 @@
         = link_to 'Delete from list', destroy_watch_later_movie_path(movie),
                 method: :delete, class: "btn btn-primary btn-sm",
                 id: "delete_from_watch_later",
-                role: "button"
+                role: "button",
+                remote: true
       = render partial: "movie", locals: {movie: movie}
