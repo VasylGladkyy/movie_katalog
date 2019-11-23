@@ -44,6 +44,11 @@
         p= flash[:error]
     - unless current_user.movies.include?(@movie)
       .watch_later_button
-        = link_to "Watch later", add_to_watch_later_movie_path(@movie), method: :put, class: "btn btn-primary", id: "watch_later_button", role: "button"
+        = link_to "Watch later",
+                add_to_watch_later_movie_path(@movie),
+                method: :put, class: "btn btn-primary",
+                id: "watch_later_button",
+                role: "button",
+                remote: true
   = render partial: "reviews/reviews", locals: { reviewable: @movie } if @movie.reviews.any?
   = render partial: "reviews/form", locals: { reviewable: @movie, review: Review.new }

@@ -18,7 +18,10 @@ class MoviesController < ApplicationController
     else
       flash[:error] = 'Added movie is present in watch later list!'
     end
-    redirect_to @movie
+    respond_to do |format|
+      format.html { redirect_to @movie }
+      format.js
+    end
   end
 
   def watch_later
