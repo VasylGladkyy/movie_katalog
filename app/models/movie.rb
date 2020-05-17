@@ -1,12 +1,20 @@
 require 'open-uri'
 
 class Movie < ApplicationRecord
+  searchkick text_middle: [:title]
+
   has_many :reviews, as: :reviewable, dependent: :destroy
   has_one_attached :poster_image, dependent: :destroy
   has_and_belongs_to_many :users, dependent: :destroy
 
   validates :title, :imdb_id, presence: true, uniqueness: true
-  validates :ganre, :release_date, :director, :actors, :plot, :poster_url, presence: true
+  validates :ganre, 
+            :release_date,
+            :director,
+            :actors,
+            :plot,
+            :poster_url,
+            presence: true
   validates :imdbRating, presence: true, numericality: true
   validates :metascore, presence: true, numericality: { only_integer: true }
 
@@ -17,9 +25,15 @@ class Movie < ApplicationRecord
 
   before_save :grab_image
 
-  def self.search(title:)
+  def search_data
+    {
+      title: title
+    }
+  end
+
+  def self.search_by_title(title:)
     if title
-      where('title LIKE ?', "%#{title}%")
+      search(title)
     else
       order(imdbRating: :desc)
     end

@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   end
 
   resources :movies do
+    collection do
+      get :autocomplete
+    end
     member do
       put :add_to_watch_later
     end
