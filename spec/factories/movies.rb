@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: movies
+#
+#  id           :bigint           not null, primary key
+#  actors       :text             default(" ")
+#  director     :string           default(" ")
+#  ganre        :string           default(" ")
+#  imdbRating   :float
+#  metascore    :integer
+#  plot         :text             default(" ")
+#  poster_url   :string
+#  release_date :date
+#  title        :string           default(" ")
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  imdb_id      :string
+#
+
 FactoryBot.define do
   factory :movie do
     title { Faker::Company.bs }
