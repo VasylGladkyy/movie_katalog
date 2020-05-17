@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!, only: %i[show add_to_watch_later watch_later destroy_watch_later]
 
   def index
-    @movies = Movie.search(title: params[:title])
+    @movies = Movie.search_by_title(title: params[:title])
   end
 
   def show
@@ -37,6 +37,16 @@ class MoviesController < ApplicationController
       format.html { redirect_to watch_later_movie_path(@user) }
       format.js
     end
+  end
+
+  def autocomplete
+    render json: Movie.search(params[:title], {
+      fields: ["title"],
+      match: :text_middle,
+      limit: 5,
+      load: false,
+      missoellings: { bellow: 5 }
+    }).map(&:title)
   end
 
   protected

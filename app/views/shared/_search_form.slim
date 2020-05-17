@@ -1,4 +1,10 @@
 = form_tag(path, :method => "get", class: "form-horizontal" ) do
   .col-sm-4
-    = text_field_tag(:title, nil, class: "form-control", placeholder: "Put title of movie ")
+    = text_field_tag :title,
+                        nil, 
+                        class: "form-control",
+                        id: 'movies_serch',
+                        autocomplete: :off,
+                        placeholder: "Put title of movie "
+
   = submit_tag("Search", class: "btn btn-primary")
