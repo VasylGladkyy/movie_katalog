@@ -7,3 +7,4 @@
     = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
     = f.button :submit, "Login in", class: "btn-primary"
   = render "users/shared/links"
+  = any_login_here if defined?(AnyLogin)

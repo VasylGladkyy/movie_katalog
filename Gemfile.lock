@@ -72,6 +72,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    any_login (1.4.3)
+      rails (>= 4.2.7)
     autoprefixer-rails (9.7.6)
       execjs
     bcrypt (3.1.13)
@@ -316,6 +318,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate!
+  any_login
   blueprinter
   bootsnap (>= 1.4.2)
   bootstrap-sass (~> 3.4.1)
